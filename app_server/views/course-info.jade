@@ -1,0 +1,49 @@
+extends layout
+
+mixin assignment-details(assignment)
+  .panel-body
+    h4
+      a.pull-right.btn.btn-default.btn-xs Edit
+      strong= assignment.name
+    p
+      strong Due:
+      | &nbsp;#{assignment.due}
+    p
+      strong Points:
+      | &nbsp;#{assignment.points}
+    p
+      strong Status:
+      | &nbsp;#{assignment.status}
+
+block content
+  .row.page-header
+    .col-lg-12
+      h1
+        a(href="/course/assignment/new").btn.btn-primary.pull-right Add Assignment
+        span.sm-break
+          strong= courseId
+          | &nbsp;
+        span.sm-break= name
+  .row
+    .col-xs-12.col-sm-4
+      .panel.panel-info
+        .panel-body
+          p
+            strong Instructor:
+            | &nbsp;#{instructor}
+          p
+            strong Credits:
+            | &nbsp;#{credits}
+          p
+            strong Location:
+            | &nbsp;#{room}
+
+  .row
+    for assignment in assignments
+      .col-xs-12.col-sm-6.col-md-4
+        - if (assignment.status === 'Complete')
+          .panel.panel-success
+            +assignment-details(assignment)
+        - else
+          .panel.panel-danger
+            +assignment-details(assignment)

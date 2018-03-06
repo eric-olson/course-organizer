@@ -1,0 +1,28 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  #banner.page-header
+    .row
+      .col-xs-12
+        h1
+          span.sm-break #{pageHeader.title}&nbsp;
+          small.sm-break #{pageHeader.strapline}
+  for course in courses
+    .row
+      .col-xs-12.col-sm-8.panel.panel-primary
+        .panel-body
+          h3
+            a(href="/course").sm-break #{course.courseId}&nbsp;
+            span.sm-break= course.name
+          .row
+            .col-xs-12.col-sm-5
+              p
+                span.text-muted Instructor:&nbsp;
+                span= course.instructor
+            .col-sm-2
+            .col-xs-12.col-sm-5
+              p
+                span.text-muted Location:&nbsp;
+                span= course.room

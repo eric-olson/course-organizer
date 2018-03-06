@@ -1,0 +1,20 @@
+
+.sm-break {
+  display: block;
+}
+
+@media only screen and (min-width : 768px) {
+  .sm-break {
+    display: inline;
+  }
+}
+
+.panel {
+  border-width: 0 0 0 8px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.4);
+  border-radius: 2px;
+}
+
+.panel-body h3 {
+  margin-top: 0.2em;
+}
